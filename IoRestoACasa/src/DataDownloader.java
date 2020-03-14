@@ -65,6 +65,8 @@ public class DataDownloader {
 
 				while ((line=reader.readLine()) != null)
 				{
+					if (line.startsWith("﻿"))
+						line=line.substring(3);
 					content.append(line);
 					content.append("\n");
 				}
@@ -81,6 +83,7 @@ public class DataDownloader {
 	
 	public StringBuffer getNationalData ()
 	{
+		System.out.println(nationalData);
 		return nationalData;
 	}
 	
