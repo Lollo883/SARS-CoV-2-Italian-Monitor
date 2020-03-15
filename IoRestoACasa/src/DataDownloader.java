@@ -57,7 +57,6 @@ public class DataDownloader {
 			HttpURLConnection connection = (HttpURLConnection) urlData.openConnection();
 			connection.setInstanceFollowRedirects(true);
 			status = connection.getResponseCode();
-			//System.out.println("Stato = " + status);
 			if (status==200)
 			{
 				int i = 0 ;
@@ -70,7 +69,13 @@ public class DataDownloader {
 					content.append(line);
 					content.append("\n");
 				}
+			//	System.out.println(content);
+
 					
+			}
+			else
+			{
+				//LOCAL RETRIEVE
 			}
 			connection.disconnect();
 		} catch (IOException e) {
@@ -83,7 +88,6 @@ public class DataDownloader {
 	
 	public StringBuffer getNationalData ()
 	{
-		System.out.println(nationalData);
 		return nationalData;
 	}
 	

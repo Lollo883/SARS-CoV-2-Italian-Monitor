@@ -51,6 +51,8 @@ public class DataFinder {
 	
 	public ArrayList<DailyData> getRegionData(String region)
 	{
+		if (region.equals(""))
+			return this.getData();
 		return dataParser.parseRegion(region);
 	}
 	public DailyData getYesterdayInfo() {

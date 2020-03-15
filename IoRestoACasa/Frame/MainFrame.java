@@ -31,11 +31,14 @@ import javax.swing.JOptionPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.URI;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Component;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -225,7 +228,7 @@ public class MainFrame {
 				
 			}
 		});
-		btnAggiorna.setBounds(143, 265, 89, 23);
+		btnAggiorna.setBounds(143, 28, 89, 23);
 		frmIoRestoACasa.getContentPane().add(btnAggiorna);
 		
 		JButton btnVaiAlDettaglio = new JButton("Vai al Dettaglio");
@@ -237,20 +240,20 @@ public class MainFrame {
 				detailFrame.setVisible(true);
 			}
 		});
-		btnVaiAlDettaglio.setBounds(10, 265, 123, 23);
+		btnVaiAlDettaglio.setBounds(242, 28, 138, 23);
 		frmIoRestoACasa.getContentPane().add(btnVaiAlDettaglio);
 		
 		JButton btnCrediti = new JButton("Crediti");
 		btnCrediti.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				JOptionPane.showMessageDialog(null, "Questo programma è stato scritto totalmente da Lorenzo Ganci "
-						+ " sotto licenza generale pubblica GNU. \nSi ringrazia il dipartimento della protezione"
-						+ "civile italiana nella persona"
+						+ " sotto licenza\n generale pubblica GNU. \nSi ringrazia il dipartimento della protezione"
+						+ "civile italiana nella persona\n"
 						+ "di Umberto Rosini per la pubblicazione dei dati che\nvengono utilizzati in questo programma.\n"
 						+ "Per eventuali contatti scrivere a lorenzo.ganci@yahoo.it");
 			}
 		});
-		btnCrediti.setBounds(242, 265, 89, 23);
+		btnCrediti.setBounds(495, 265, 89, 23);
 		frmIoRestoACasa.getContentPane().add(btnCrediti);
 		
 		regionPick = new JComboBox();
@@ -278,5 +281,31 @@ public class MainFrame {
 		});
 		btnVaiAllaRegione.setBounds(10, 53, 125, 23);
 		frmIoRestoACasa.getContentPane().add(btnVaiAllaRegione);
+		
+		JButton btnGrafici = new JButton("Grafici");
+		btnGrafici.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ChartFrame chartFrame = new ChartFrame();
+				
+			}
+		});
+		btnGrafici.setBounds(143, 53, 89, 23);
+		frmIoRestoACasa.getContentPane().add(btnGrafici);
+		
+		JButton btnFaiUnaDonazione = new JButton("Fai una Donazione");
+		btnFaiUnaDonazione.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String s = "http://www.google.com";
+				Desktop desktop = Desktop.getDesktop();
+				try {
+					desktop.browse(URI.create("https://www.gofundme.com/f/coronavirus-terapia-intensiva"));
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
+		btnFaiUnaDonazione.setBounds(242, 53, 138, 23);
+		frmIoRestoACasa.getContentPane().add(btnFaiUnaDonazione);
 	}
 }

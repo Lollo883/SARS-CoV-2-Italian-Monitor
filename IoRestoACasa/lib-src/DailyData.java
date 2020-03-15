@@ -1,3 +1,10 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import org.jfree.data.time.Day;
+
 /*
  * Copiright 2020 Lorenzo Ganci © 
  * This file is part of SARS-CoV-2 Italian Monitor.
@@ -29,7 +36,12 @@ public class DailyData {
 	int dead=0;
 	int totalCases=0;
 	int swabs=0;
-	
+	int day =0;
+	int month = 0;
+	int year = 0;
+	Day structuredDay;
+	Date date;
+	Calendar calendar;
 	
 	
 	
@@ -37,7 +49,12 @@ public class DailyData {
 			int totalHospitalized, int homeIsolated, int totalPositive, int newPositive, int healed, int dead,
 			int totalCases, int swabs) {
 		super();
-		this.data = data;
+
+		this.data=data;
+		day=Integer.valueOf(data.substring(8,10));
+		month=Integer.valueOf(data.substring(5,7));
+		year=Integer.valueOf(data.substring(0,4));
+		structuredDay = new Day(day,month,year);
 		this.region = region;
 		this.regionCode = regionCode;
 		this.hospitalized = hospitalized;
@@ -50,12 +67,23 @@ public class DailyData {
 		this.dead = dead;
 		this.totalCases = totalCases;
 		this.swabs = swabs;
+		
+		
+	}
+	public Day getStructuredDay() {
+		return structuredDay;
+	}
+	public void setstructuredDay(Day day) {
+		this.structuredDay = day;
 	}
 	public DailyData(String data, int hospitalized, int intensiveCare, int totalHospitalized, int homeIsolated,
 			int totalPositive, int newPositive, int healed, int dead, int totalCases, int swabs) {
 		super();
-		this.data = data;
-		this.hospitalized = hospitalized;
+		this.data=data;
+		day=Integer.valueOf(data.substring(8,10));
+		month=Integer.valueOf(data.substring(5,7));
+		year=Integer.valueOf(data.substring(0,4));
+		structuredDay = new Day(day,month,year);	
 		this.intensiveCare = intensiveCare;
 		this.totalHospitalized = totalHospitalized;
 		this.homeIsolated = homeIsolated;
