@@ -1,1 +1,0 @@
-java -jar SARS-CoV-2ItalianMonitor1.1.jar
